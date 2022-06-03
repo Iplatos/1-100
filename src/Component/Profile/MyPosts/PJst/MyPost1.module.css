@@ -1,0 +1,13 @@
+.item{
+    color: blueviolet;
+}
+.item img {
+
+    width: 100px; height: 100px; /* Ширина и высота */
+    border-radius: 50%;
+
+
+  /*  width: 100px;
+    height: auto;
+    border-radius: 65px;*/
+}
