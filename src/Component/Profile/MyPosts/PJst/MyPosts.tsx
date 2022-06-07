@@ -13,11 +13,9 @@ const MyPosts = ()=>{
         <button>Remove</button>
     </div>
         <div className={s.item}>new post</div>
-       <Post/>
-       <Post/>
-       <Post/>
-       <Post/>
-       <Post/>
+       <Post message={"Hi,TY &Fy"} likes={12}/>
+       <Post message={"firstPOst"} likes={24} />
+
         <div className={s.item}>post2</div>
         <div className={s.item}>post3</div>
     </div>)

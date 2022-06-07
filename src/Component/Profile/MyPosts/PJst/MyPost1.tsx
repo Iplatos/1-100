@@ -1,21 +1,28 @@
+import React from "react";
 import s from "./MyPost1.module.css"
 
-import React from "react";
 
 
+export type PostPropsType={
+    message:string
+    likes:number
+}
 
-const Post = ()=>{
+const Post = (props:PostPropsType)=>{
+
     return (
 
 
 
         <div className={s.item}>
             <img src = "https://img4.goodfon.ru/wallpaper/nbig/8/7f/hotline-miami-hotline-miami-synthpop-synth-retrowave-darkw-1.jpg"/>
-        post1
+            <div >{props.message}</div>
+            <div>likes{props.likes}</div>
 <div>
-    <span>like</span>
+
         </div>
-        </div>)
+        </div>
+            )
 }
 
 export default Post

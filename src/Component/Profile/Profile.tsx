@@ -3,7 +3,7 @@ import p from "./Profile.module.css"
 import MyPosts from "./MyPosts/PJst/MyPosts";
 
 const Profile = () =>{
-   return     <div className={p.content}>
+   return     <div >
        <div>
            <img src='https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg'/>
        </div>
