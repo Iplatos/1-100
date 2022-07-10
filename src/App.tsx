@@ -1,37 +1,40 @@
-import React from 'react';
-import './App.css';
-import Header from "./Component/Header/Header";
-import Nav from "./Component/Nav/Nav";
-import Profile from "./Component/Profile/Profile";
-import {Dialogs} from "./Component/Dialogs/Dialogs";
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import React from 'react'
 
-// почитай про гриды!!!!
-/*(это я не тебе
- бэм методология
- 12.06 video 14)*/
+import './App.css';
+import {Header} from "./Components/Header/Header";
+import {Nav} from "./Components/Nav/Nav";
+import {Profile} from "./Components/Profile/MyPosts/Profile";
+import {Dialogs} from "./Components/Dailogs/Dialogs";
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {Music} from "./Components/Musik/Music";
+import {News} from "./Components/News/News";
+import {Settings} from "./Components/Settings/Settings";
+
+/*c 25 start*/
+
 const App = () => {
     return (
         <BrowserRouter>
-        <div className='app-wrapper'>
+        <div className="app-wrapper">
             <Header/>
             <Nav/>
 
 
-            <div className="app-wrapper-content">
-                <Routes>
-                    <Route path="/dialog" element= {<Dialogs/>}/>
-                    <Route path="/profile" element={<Profile/>}/>
-            </Routes>
+                    <div className={'app-wrapper-content'}>
+                        <Routes>
+                            <Route path="/profile" element ={<Profile />} />
+                            <Route path="/dialogs/*" element ={<Dialogs />} />
+                            <Route path="/news" element ={<News />} />
+                            <Route path="/music" element ={<Music />} />
+                            <Route path="/settings" element ={<Settings />} />
+
+                        </Routes>
+                    </div>
+
 
             </div>
+        </BrowserRouter>
 
-
-
-        </div>
-        </BrowserRouter>)
+    );
 }
-
-
-
-export default App
+export default App;
