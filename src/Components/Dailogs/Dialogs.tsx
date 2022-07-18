@@ -10,7 +10,7 @@ type DialogsPropsType={
 }
 
 export const Dialogs = (props:DialogsPropsType) => {
-debugger
+
     /*let dialogs = [
         {id: 1, name: "Dimych"},
         {id: 2, name: "Igor"},
@@ -40,6 +40,7 @@ debugger
 
 
             </div>
+            <textarea></textarea>
         </div>
 
     )
