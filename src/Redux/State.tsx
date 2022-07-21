@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree=(props:StateAppType) => {
+    console.log("state is changed")
+}
 
 export type PostType = {
     id:number,
@@ -30,6 +32,8 @@ export type StateAppType = {
     profilePage:ProfilePageType
     dialogsPage:DialogPageType
 }
+
+
 
 export let state:StateAppType={
 
@@ -73,4 +77,7 @@ export let updateNewPostText=(newText:string)=>{
     state.profilePage.newPostText = newText
     rerenderEntireTree(state);
 
+}
+export const subcribe=(observer:()=>void)=>{
+    rerenderEntireTree=observer
 }

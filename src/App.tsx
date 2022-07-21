@@ -10,34 +10,9 @@ import {Music} from "./Components/Musik/Music";
 import {News} from "./Components/News/News";
 import {Settings} from "./Components/Settings/Settings";
 import {StateAppType, updateNewPostText} from "./Redux/State";
-
+//35?
 /*ачинатьс 35*/
-/*export type statePropsType={
-    profilePage:ProfilePageType
-    dialogsPage:DialogsPagePropstype
-}
-export type ProfilePageType={
-    posts:postsPropsType[]
-}
 
-export type postsPropsType={
-    id:number
-    message:string
-    likecount:number
-}
-
-type dialogsPropsType={
-    id:number
-    name:string
-}
-type MessagePropsType={
-    id:number
-    message:string
-}
-export type DialogsPagePropstype={
-    messages:MessagePropsType[]
-    dialogs:dialogsPropsType[]
-}*/
 
 export type AppPropsType = {
     state: StateAppType
