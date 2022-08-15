@@ -9,23 +9,26 @@ import {Route, Routes} from 'react-router-dom'
 import {Music} from "./Components/Musik/Music";
 import {News} from "./Components/News/News";
 import {Settings} from "./Components/Settings/Settings";
-import {StateAppType, updateNewPostText} from "./Redux/State";
-//35?
-/*ачинатьс 35*/
+import {ReduceType, StateAppType, storePropsType} from "./Redux/State";
+/// 40 vid last 10 min
 
 
 export type AppPropsType = {
     state: StateAppType
-    addPost:(message:string)=>void
-    updateNewPostText:(text:string)=>void
+    /*addPost: (message: string) => void
+    updateNewPostText: (text: string) => void*/
+    dispatch: (action:ReduceType) => void
+    NewMessageBody:string
+    store: storePropsType
 }
 
 
-const App = (props:AppPropsType) => {
 
-    return (
+    const App = (props: AppPropsType) => {
 
-    <div className="app-wrapper">
+        return (
+
+            <div className="app-wrapper">
                 <Header/>
                 <Nav/>
 
@@ -34,12 +37,13 @@ const App = (props:AppPropsType) => {
                     <Routes>
                         <Route path="/profile"
                                element={<Profile newPostText={props.state.profilePage.newPostText}
-                                   profilePage={props.state.profilePage}
-                                                 addPost={props.addPost}
-                                                 updateNewPostText={props.updateNewPostText}
+                                                 profilePage={props.state.profilePage}
+                                                 dispatch={props.dispatch}
+                                                 store={props.store}
+                                   /*updateNewPostText={props.updateNewPostText}*/
                                />}/>
                         newPostText
-                        <Route path="/dialogs/*" element={<Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs NewMessageBody={props.NewMessageBody} store={props.store} dialogsPage={props.state.dialogsPage}/>}/>
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/>
@@ -51,6 +55,6 @@ const App = (props:AppPropsType) => {
             </div>
 
 
-    );
-}
+        );
+    }
 export default App;

@@ -1,47 +1,51 @@
-import React, {ChangeEventHandler, LegacyRef, MouseEventHandler} from "react";
+import React from "react";
 import s from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {PostType, updateNewPostText} from "../../../Redux/State";
+import {AddPostAC, PostType, ReduceType, UpdateNewPostTextAC} from "../../../Redux/State";
 
 
 type PostsPropsType = {
     posts: PostType[]
-    addPost:(message:string)=>void
-    newPostText:string
-    updateNewPostText:(text:string)=>void
+    /*addPost: (message: string) => void*/
+    newPostText: string
+    /*updateNewPostText: (text: string) => void*/
+    dispatch: (text:ReduceType) => void
 }
 
+
+
 export const MyPosts = (props: PostsPropsType) => {
-    /*let posts=[
-        {id:1, message:"Hi! how are you?", likecount: 23 },
-        {id:2, message:"Do you love me?", likecount: 33 }
-    ]*/
-    let postsElement = props.posts.map(post => <Post message={post.message} likecount={post.likecount}/>)
+
+    let postsElement = props.posts.map(post => <Post key={post.message} message={post.message}
+                                                     likecount={post.likecount}/>)
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
 
     let addPost = () => {
-        if (newPostElement.current){
-            props.addPost(newPostElement.current.value)
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            let action = AddPostAC(text)
+            props.dispatch(action)
 
         }
-    /*    let text = newPostElement.current?.value*/
+        /*    let text = newPostElement.current?.value*/
         /*props.addPost(text)*/
 
     }
-    let onPostChange=()=>{
-        if (newPostElement.current){
-            props.updateNewPostText(newPostElement.current.value)}
-
-
+    let onPostChange = () => {
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            let action = UpdateNewPostTextAC(text)
+            props.dispatch(action)
+        }
     }
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <textarea onChange={onPostChange} value={props.newPostText}  ref={newPostElement}/></div>
+                <textarea onChange={onPostChange} value={props.newPostText} ref={newPostElement}/></div>
             <div>
                 <button onClick={addPost}>Add post</button>
                 <button>Remove</button>
