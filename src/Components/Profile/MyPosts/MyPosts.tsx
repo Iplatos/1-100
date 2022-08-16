@@ -1,7 +1,10 @@
 import React from "react";
 import s from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {AddPostAC, PostType, ReduceType, UpdateNewPostTextAC} from "../../../Redux/State";
+
+import {ReduceType} from "../../../App";
+import {AddPostAC, UpdateNewPostTextAC} from "../../../Redux/Profile-Reducer";
+import {PostType} from "../../../Redux/State";
 
 
 type PostsPropsType = {
@@ -9,9 +12,8 @@ type PostsPropsType = {
     /*addPost: (message: string) => void*/
     newPostText: string
     /*updateNewPostText: (text: string) => void*/
-    dispatch: (text:ReduceType) => void
+    dispatch: (text: ReduceType) => void
 }
-
 
 
 export const MyPosts = (props: PostsPropsType) => {

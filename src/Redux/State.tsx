@@ -1,3 +1,6 @@
+import {ProfileReducer} from "./Profile-Reducer";
+import {DialogsReducer} from "./Dialogs-Reducer";
+
 export type PostType = {
     id: number,
     message: string,
@@ -81,7 +84,7 @@ export const store = {
 
         let newPost = {id: 5, message: this._state.profilePage.newPostText, likecount: 3}
         this._state.profilePage.posts.push(newPost)
-        this._callSubscriber(this._state);
+
         this._updateNewPostText("")
         },
 
@@ -92,8 +95,12 @@ export const store = {
 
 
     dispatch (action: any) {
-        if (action.type === "ADD-POST") {
-            let newPost = {id: 5, message: this._state.profilePage.newPostText, likecount: 3}
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
+        this._callSubscriber(this._state);
+    }
+       /* if (action.type === "ADD-POST") {
+            let newPost = {id: 5, message: action.payload.newText, likecount: 3}
             this._state.profilePage.posts.push(newPost)
             this._callSubscriber(this._state);
             this._state.profilePage.newPostText = ""
@@ -108,15 +115,16 @@ export const store = {
             this._callSubscriber(this._state);
 
         }  else if (action.type === "SEND-NEW-MESSAGE") {
-            let body = this._state.dialogsPage.NewMessageBody
+           /!* let body = this._state.dialogsPage.NewMessageBody*!/
             this._state.dialogsPage.NewMessageBody = ""
-            this._state.dialogsPage.messages.push({id: 8, message: body, })
+            this._state.dialogsPage.messages.push({id: 8, message: action.payload.body })
             this._callSubscriber(this._state);
         }
-    }
+    }*/
 }
 
-export type ReduceType = AddPostACType | UpdateNewPostTextACType | UpdateNewMessageBodyAC | SendNewMessageAC
+
+/*
 
 type AddPostACType = ReturnType<typeof AddPostAC>
 
@@ -150,6 +158,7 @@ export let SendNewMessageAC = (body: string) => {
         payload: {body}
     } as const
 }
+*/
 
 
 //redux система управления состоянием
