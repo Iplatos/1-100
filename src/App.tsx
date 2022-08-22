@@ -9,20 +9,23 @@ import {Route, Routes} from 'react-router-dom'
 import {Music} from "./Components/Musik/Music";
 import {News} from "./Components/News/News";
 import {Settings} from "./Components/Settings/Settings";
-import { StateAppType, storePropsType} from "./Redux/State";
+import {StateAppType, storePropsType} from "./Redux/Store";
 import {ReduceDialogsType} from "./Redux/Dialogs-Reducer";
 import {ReduceProfileType} from "./Redux/Profile-Reducer";
-/// 40 vid last 10 min
+import {AppStateType, StoreType} from "./Redux/ReduxStore";
+import {Dispatch} from "redux";
+import {DialogsContainer} from "./Components/Dailogs/DialogsContainer";
+///45 vid start
 
 export type ReduceType = ReduceProfileType | ReduceDialogsType
 
 export type AppPropsType = {
-    state: StateAppType
+    state: AppStateType
     /*addPost: (message: string) => void
     updateNewPostText: (text: string) => void*/
-    dispatch: (action: ReduceType) => void
+    dispatch: Dispatch
     NewMessageBody: string
-    store: storePropsType
+    store: StoreType
 }
 
 
@@ -37,28 +40,25 @@ const App = (props: AppPropsType) => {
             <div className={'app-wrapper-content'}>
                 <Routes>
                     <Route path="/profile"
-                           element={<Profile newPostText={props.state.profilePage.newPostText}
-                                             profilePage={props.state.profilePage}
-                                             dispatch={props.dispatch}
-                                             store={props.store}
+                           element={<Profile
+                               store={props.store}
                                /*updateNewPostText={props.updateNewPostText}*/
                            />}/>
                     newPostText
-                    <Route path="/dialogs/*" element={<Dialogs NewMessageBody={props.NewMessageBody}
-                                                               //store={props.store}
-                                                               dispatch={props.dispatch}
-                                                               dialogsPage={props.state.dialogsPage}/>}/>
-                    <Route path="/news" element={<News/>}/>
-                    <Route path="/music" element={<Music/>}/>
-                    <Route path="/settings" element={<Settings/>}/>
+                    <Route path="/dialogs/*" element={<DialogsContainer
+                        store={props.store}/>}/>
 
-                </Routes>
-            </div>
+                        <Route path="/news" element={<News/>}/>
+                        <Route path="/music" element={<Music/>}/>
+                        <Route path="/settings" element={<Settings/>}/>
 
-
-        </div>
+                        </Routes>
+                        </div>
 
 
-    );
-}
-export default App;
+                        </div>
+
+
+                        );
+                    }
+                           export default App;

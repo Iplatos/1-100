@@ -1,5 +1,6 @@
 import {ProfileReducer} from "./Profile-Reducer";
 import {DialogsReducer} from "./Dialogs-Reducer";
+import reducerSideBar from "./ReducerSideBar";
 
 export type PostType = {
     id: number,
@@ -68,8 +69,10 @@ export const store = {
                 {id: 5, name: "Kolya"}
             ],
             NewMessageBody : ""
-        }
+        },
+        sideBar: {},
     },
+
     getState() {
 
         return this._state
@@ -97,6 +100,7 @@ export const store = {
     dispatch (action: any) {
         this._state.profilePage = ProfileReducer(this._state.profilePage, action)
         this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
+        this._state.sideBar = reducerSideBar(this._state.sideBar, action)
         this._callSubscriber(this._state);
     }
        /* if (action.type === "ADD-POST") {

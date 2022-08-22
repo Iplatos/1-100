@@ -1,4 +1,4 @@
-import {DialogPageType} from "./State";
+import {DialogPageType} from "./Store";
 
 export type ReduceDialogsType = UpdateNewMessageBodyAC | SendNewMessageAC
 
@@ -20,8 +20,25 @@ export let SendNewMessageAC = (body: string) => {
     } as const
 }
 
+let initialState = {
+    messages: [
+        {id: 1, message: "hi"},
+        {id: 2, message: "how are you"},
+        {id: 3, message: "where is my money?"},
+        {id: 4, message: "ku ku "},
+        {id: 5, message: "i've lost my keys"}
+    ],
+    dialogs: [
+        {id: 1, name: "Dimych"},
+        {id: 2, name: "Igor"},
+        {id: 3, name: "Pepsi"},
+        {id: 4, name: "Gena"},
+        {id: 5, name: "Kolya"}
+    ],
+    NewMessageBody : ""
+}
 
-export const DialogsReducer = (state: DialogPageType, action: ReduceDialogsType) => {
+export const DialogsReducer = (state=initialState, action: ReduceDialogsType) => {
     switch (action.type) {
         case "UPDATE-NEW-MESSAGE-BODY":
             state.NewMessageBody = action.payload.body

@@ -1,4 +1,4 @@
-import {ProfilePageType} from "./State";
+import {ProfilePageType} from "./Store";
 
 export type ReduceProfileType = AddPostACType | UpdateNewPostTextACType /*| UpdateNewMessageBodyAC | SendNewMessageAC*/
 
@@ -7,9 +7,17 @@ type AddPostACType = ReturnType<typeof AddPostAC>
 type UpdateNewPostTextACType = ReturnType<typeof UpdateNewPostTextAC>
 
 
+let initialState = {
+    posts: [
+        {id: 1, message: "Hi! how are you?", likecount: 23},
+        {id: 2, message: "Do you love me?", likecount: 33},
 
+    ],
+    newPostText: ""
+}
 
-export const ProfileReducer = (state: ProfilePageType, action:ReduceProfileType) => {
+export const ProfileReducer = (state= initialState, action:ReduceProfileType) => {
+
     switch (action.type) {
         case "ADD-POST" :
             let newPost = {id: 5, message: action.payload.newText, likecount: 3}
