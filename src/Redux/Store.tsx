@@ -33,6 +33,7 @@ export type DialogPageType = {
 export type StateAppType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
+    sideBar: any
 
 }
 export type storePropsType = {

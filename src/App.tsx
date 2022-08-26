@@ -4,18 +4,17 @@ import './App.css';
 import {Header} from "./Components/Header/Header";
 import {Nav} from "./Components/Nav/Nav";
 import {Profile} from "./Components/Profile/ProfileInfo/Profile";
-import {Dialogs} from "./Components/Dailogs/Dialogs";
 import {Route, Routes} from 'react-router-dom'
 import {Music} from "./Components/Musik/Music";
 import {News} from "./Components/News/News";
 import {Settings} from "./Components/Settings/Settings";
-import {StateAppType, storePropsType} from "./Redux/Store";
 import {ReduceDialogsType} from "./Redux/Dialogs-Reducer";
 import {ReduceProfileType} from "./Redux/Profile-Reducer";
 import {AppStateType, StoreType} from "./Redux/ReduxStore";
 import {Dispatch} from "redux";
 import {DialogsContainer} from "./Components/Dailogs/DialogsContainer";
-///45 vid start
+
+///46 ' vid start
 
 export type ReduceType = ReduceProfileType | ReduceDialogsType
 
@@ -29,7 +28,7 @@ export type AppPropsType = {
 }
 
 
-const App = (props: AppPropsType) => {
+const App = () => {
 
     return (
 
@@ -40,13 +39,13 @@ const App = (props: AppPropsType) => {
             <div className={'app-wrapper-content'}>
                 <Routes>
                     <Route path="/profile"
-                           element={<Profile
-                               store={props.store}
-                               /*updateNewPostText={props.updateNewPostText}*/
-                           />}/>
+                           element={<Profile />}
+                              /* store={props.store}*/
+
+                          />
                     newPostText
-                    <Route path="/dialogs/*" element={<DialogsContainer
-                        store={props.store}/>}/>
+                    <Route path="/dialogs/*" element={<DialogsContainer/>}/>
+
 
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>

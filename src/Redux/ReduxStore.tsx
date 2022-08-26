@@ -1,5 +1,5 @@
 import React from 'react';
-import {combineReducers, createStore} from "redux";
+import {combineReducers, legacy_createStore} from "redux";
 import {ProfileReducer} from "./Profile-Reducer";
 import {DialogsReducer} from "./Dialogs-Reducer";
 import reducerSideBar from "./ReducerSideBar";
@@ -12,9 +12,10 @@ let reducers = combineReducers({
 })
 
 
-let store = createStore(reducers)
+let store = legacy_createStore(reducers)
 export type StoreType = typeof store
 export type AppStateType = ReturnType<typeof reducers>
+
 export default store
 
 
